@@ -159,6 +159,20 @@ x<-na.omit(x)
 length(x)'
 LANGUAGE 'plr' STRICT;
 
+CREATE OR REPLACE FUNCTION PSuitable (float[],float[],float,float,float) RETURNS float AS '
+x<-arg1
+q<-arg2
+depth<-arg3
+ht<-arg4
+tide<-arg5
+depth<-depth+tide
+x2<-q[x>=depth&x<=ht]
+x2<-max(x2)-min(x2)
+if(is.na(x2))x2<-0
+if(x2==-Inf)x2<-0
+x2'
+LANGUAGE 'plr' STRICT;
+
 "
 odbcQuery(con,query)
 }
@@ -243,9 +257,22 @@ maximum((st_dumpvalues(rast)).valarray) max
 from ",dem,") s
 where min>",minht," and max < ",maxht," and min <1000000000000;
 CREATE INDEX grat_gix ON grat USING GIST (geom);",sep="")
-odbcQuery(con,query)  
+odbcQuery(con,query)
+query<-"
+ALTER TABLE grat ADD COLUMN psuitable numeric(3);
+"
+odbcQuery(con,query)
 }
 
+## Calulate the proportion of each graticule within a suitable heght range,
+
+PgPSuitable<-function(db="brant",depth=-2,height=5)
+{
+  require(RODBC)
+  con<-odbcConnect(db)
+  query<-sprintf("update grat set psuitable = PSuitable(array[min,q10,q25,median,q75,q90,max],array[0,10,25,50,75,90,100],%s,%s,0);",depth,height)
+  odbcQuery(con,query)
+}
 
 
 # 
