@@ -27,14 +27,14 @@ library(RColorBrewer)
 #load("station_data.dat")
 #stations<-meteo_process_geographic_data(station_data, lat, lon)
 #climate_data<-ghcnd("USW00025624") ## Load cold bay
-climate_data<-read.csv("climate_data.csv")
+climate_data<-read.csv("data/climate_data.csv")
 meas<-paste("VALUE",1:31,sep="")
 climate_data<-melt(climate_data,id=c("year","month","element"),m=meas)
 climate_days<-as.numeric(gsub("VALUE","",climate_data$variable))
 climate_year<-as.numeric(as.character(climate_data$year))
 climate_month<-as.numeric(as.character(climate_data$month))
 climate_data$date<-as.Date(sprintf("%04d-%02d-%02d",climate_year,climate_month,climate_days))
-load("patches.rda")
+load("data/patches.rda")
 mp <- gmap(r)
 
 shinyServer(function(input, output) {
