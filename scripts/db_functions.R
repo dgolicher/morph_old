@@ -239,6 +239,7 @@ PgMakeGrat<-function(dem="dem",minht=-5,maxht=10,xdim=10,ydim=10,db="brant")
                  select s.* from
                  (select
                  geom,
+                 st_area(geom)/1000000 areakm2,
                  minimum(vals) min,
                  q10(vals) q10,
                  q25(vals) q25,

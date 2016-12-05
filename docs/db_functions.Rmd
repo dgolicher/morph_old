@@ -277,6 +277,7 @@ create table grat as
 select s.* from
 (select
 geom,
+st_area(geom)/1000000 areakm2,
 minimum(vals) min,
 q10(vals) q10,
 q25(vals) q25,
@@ -405,7 +406,7 @@ PgMakeDb("brant")
 PgInit("brant")
 PgPlr("brant")
 PgLoadRaster()
-PgMakeGrat()
+PgMakeGrat(xdim=10,ydim=10)
 PgPSuitable()
 PgAddResource()
 PgLoadVector()
