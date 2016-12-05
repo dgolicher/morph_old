@@ -227,7 +227,7 @@ Raster layers uses a few more arguments. The layers are loaded in database (as r
 
 
 ```{r}
-PgLoadRaster<-function(flnm="cold_bay_3857_clip.tiff",x=200,y=200,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/morph/rasters/"){
+PgLoadRaster<-function(flnm="dem.tif",x=200,y=200,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/morph/rasters/"){
 flnm<-paste(path,flnm,sep="")  
 command <- paste("raster2pgsql -s ",srid, "-I -d  -M  ",flnm, " -F -t ",x,"x",y," ",tabnm,"|psql -h postgis -U docker -d ",db,sep="")
 system(command)
@@ -308,7 +308,7 @@ odbcQuery(con,query)
 ## Calulate the proportion of each graticule within a suitable heght range,
 
 ```{r}
-PgPSuitable<-function(db="brant",depth=-2,height=5)
+PgPSuitable<-function(db="brant",depth=-0.5,height=1)
 {
   require(RODBC)
   con<-odbcConnect(db)
@@ -406,7 +406,7 @@ PgMakeDb("brant")
 PgInit("brant")
 PgPlr("brant")
 PgLoadRaster()
-PgMakeGrat(xdim=10,ydim=5)
+PgMakeGrat(xdim=10,ydim=19)
 PgPSuitable()
 PgAddResource()
 PgLoadVector()

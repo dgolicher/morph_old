@@ -1,0 +1,144 @@
+conn=0x1297a1e0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x1297a1e0, query=' '
+conn=0x1297a1e0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x1297a1e0, query='set DateStyle to 'ISO''
+conn=0x1297a1e0, query='set extra_float_digits to 2'
+conn=0x1297a1e0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x1297a1e0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x1297a1e0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x1297a1e0, query='create extension postgis'
+conn=0x1297a1e0, query='create extension plr'
+conn=0x1109a3a0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x1109a3a0, query=' '
+conn=0x1109a3a0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x1109a3a0, query='set DateStyle to 'ISO''
+conn=0x1109a3a0, query='set extra_float_digits to 2'
+conn=0x1109a3a0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x1109a3a0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x1109a3a0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x1109a3a0, query='CREATE OR REPLACE FUNCTION median (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+median(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q10 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.1,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q90 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.9,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q75 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.75,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q25 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.25,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION minimum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+min(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION maximum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+max(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION mean (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+mean(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION sd (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION se (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)/sqrt(length(x))'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION length (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+length(x)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION PSuitable (float[],float[],float,float,float) RETURNS float AS '
+x<-arg1
+q<-arg2
+depth<-arg3
+ht<-arg4
+tide<-arg5
+depth<-depth+tide
+x2<-q[x>=depth&x<=ht]
+x2<-max(x2)-min(x2)
+if(is.na(x2))x2<-0
+if(x2==-Inf)x2<-0
+x2'
+LANGUAGE 'plr' STRICT;
+
+'
+conn=0x1109a3a0, PGAPI_Disconnect
+conn=0x1297a1e0, PGAPI_Disconnect
