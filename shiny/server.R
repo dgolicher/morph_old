@@ -22,7 +22,11 @@ library(rnoaa)
 library(reshape2)
 library(RColorBrewer)
 
-
+source("/home/rstudio/morph/scripts/db_functions.R")
+PgMakeDb("brant")
+PgInit("brant")
+PgPlr("brant")
+PgLoadRaster()
 #station_data <- ghcnd_stations()
 #load("station_data.dat")
 #stations<-meteo_process_geographic_data(station_data, lat, lon)
@@ -40,31 +44,13 @@ mp <- gmap(r)
 shinyServer(function(input, output) {
   observeEvent(input$Grid_Button, {
     progress <- shiny::Progress$new()
-    # Make sure it closes when we exit this reactive, even if there's an error
     on.exit(progress$close())
     progress$set(message = "Extracting, please wait", value = 0.2)
-    dem<-input$raster_dem
-    r<-raster(dem)
-    mp <- gmap(r)
-    r[r>5]<-NA
-    r[r< -10]<-NA
+ 
     gridsize<-input$P1
-    gridsize<-as.numeric(gridsize)
-    grat <- graticule(lons = seq(r@extent@xmin,r@extent@xmax,gridsize*1000), 
-                      lats = seq(r@extent@ymin,r@extent@ymax,gridsize*1000), tiles = TRUE)
-    proj4string(grat)<-proj4string(mp)
-     a<-extract(r,grat)
-    f<-function(x)mean(x,na.rm=TRUE)
-    grat@data$mean_ht<-unlist(lapply(a,f))
-    f<-function(x)median(x,na.rm=TRUE)
-    grat@data$median_ht<-unlist(lapply(a,f))
-    f<-function(x)min(x,na.rm=TRUE)
-    grat@data$min_ht<-unlist(lapply(a,f))
-    f<-function(x)max(x,na.rm=TRUE)
-    grat@data$max_ht<-unlist(lapply(a,f))
-    grat_points<-data.frame(coordinates(grat),grat@data)
-    grat_points<-grat_points[grat_points$max_ht<3 & grat_points$max_ht> -5,]
- save(r,grat,grat_points,file="patches.rda")
+    PgMakeGrat(xdim=gridsize,ydim=gridsize)
+    PgPSuitable()
+  
   })
 #####
 
@@ -173,11 +159,12 @@ output$day_plot <- renderPlot({
  
 output$map <- renderPlot({
    gridsize<-input$P1
-    load("patches.rda")
+  
     mp <- gmap(r)
     plot(mp)
     #save(mp,file="basemap.rda")
-    
+    grat<-PgGetQuery()
+    grat_points<-data.frame(coordinates(grat),grat@data)
     map <- switch(input$to_map,
                    r = "r",
                    grat = "grat",
@@ -189,7 +176,7 @@ output$map <- renderPlot({
     r[r< -10]<-NA
     cols <- brewer.pal(8,"Blues")[8:1]
     if(map=="r")plot(r, col=cols,alpha=0.8, add=TRUE,legend=FALSE)
-    if(map=="grat_points") points(grat_points,pch=21,bg="red")
+    if(map=="grat_points") points(grat_points,pch=21,bg="red",cex=grat_points$psuitable/100)
     
     
    

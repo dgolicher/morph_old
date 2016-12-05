@@ -187,7 +187,7 @@ odbcQuery(con,query)
 # 
 # ```{r}
 
-PgLoadRaster<-function(flnm="cold_bay_3857_clip.tiff",x=100,y=100,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/shiny_morph/"){
+PgLoadRaster<-function(flnm="cold_bay_3857_clip.tiff",x=100,y=100,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/morph/rasters/"){
 flnm<-paste(path,flnm,sep="")  
 command <- paste("raster2pgsql -s ",srid, "-I -d  -M  ",flnm, " -F -t ",x,"x",y," ",tabnm,"|psql -h postgis -U docker -d ",db,sep="")
 system(command)
@@ -211,7 +211,7 @@ system(command)
 # 
 # ```{r}
 
-PgLoadVector<-function(flnm="tide_regime",tabnm="tide_regime",db="brant",srid=3857,path="/home/rstudio/shiny_morph/"){
+PgLoadVector<-function(flnm="tide_regime",tabnm="tide_regime",db="brant",srid=3857,path="/home/rstudio/morph/shapefiles/"){
 flnm<-paste(path,flnm,sep="")  
 command <- sprintf("shp2pgsql -s %s -d -I %s  %s |psql -h postgis -U docker -d %s",srid,flnm,tabnm,db)
 command

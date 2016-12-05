@@ -46,8 +46,8 @@ shinyUI(fluidPage(
              
              ),
     tabPanel("Patch parameters",
-             sliderInput("P1", "Grid cell side length in km",  
-                         min = 0.1, max = 10, value = 5,step=0.1),
+             sliderInput("P1", "Grid cell side length in raster units",  
+                         min = 2, max = 100, value = 10,step=1),
              textInput("raster_dem", val=raster_dem,'Raster elevation layer'),
              actionButton("Grid_Button", "Click here to extract values to grid cells. Warning, this may take some time to run")
              #########
