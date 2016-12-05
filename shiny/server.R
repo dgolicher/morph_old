@@ -96,7 +96,7 @@ off3<-input$off3*60
 # days<-100
 
 start_date<-as.Date(sprintf("%04d-%02d-%02d",startyr,startmn,1))
-end_date<-start_date+days
+end_date<-start_date+30
 
 tide_station1<-tide_height(stations = "King Cove*", minutes = 60L,
                  from = start_date, to = end_date, tz = "UTC",

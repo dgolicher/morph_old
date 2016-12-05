@@ -227,12 +227,13 @@ Raster layers uses a few more arguments. The layers are loaded in database (as r
 
 
 ```{r}
-PgLoadRaster<-function(flnm="cold_bay_3857_clip.tiff",x=10,y=10,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/shiny_morph/"){
+PgLoadRaster<-function(flnm="cold_bay_3857_clip.tiff",x=200,y=200,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/shiny_morph/"){
 flnm<-paste(path,flnm,sep="")  
 command <- paste("raster2pgsql -s ",srid, "-I -d  -M  ",flnm, " -F -t ",x,"x",y," ",tabnm,"|psql -h postgis -U docker -d ",db,sep="")
 system(command)
 }
 ```
+
 
 
 ## Loading vector layers
@@ -263,32 +264,39 @@ system(command)
 
 In the MoRph application patches will be either square or rectangular polygons that are derived from vectorising the raster dem that is first added to the data base. Statistics are calulated from the pixel values of the dem and held as attributes. The function can drop graticules where the minimum value is below a certain level and those with a maximum above a certain level, as this may be useful along coastlines.
 
+The dimensions of the graticule can be adjusted to be finer than those used when loading the original raster.
 
 ```{r}
-PgMakeGrat<-function(dem="dem",minht=-10,maxht=10,db="brant")
+PgMakeGrat<-function(dem="dem",minht=-100,maxht=10,xdim=5,ydim=5,db="brant")
 {
   require(RODBC)
   con<-odbcConnect(db)
-  
-query<-paste("
+  query<-sprintf("
 drop table if exists grat;
 create table grat as
 select s.* from
-(select rid, st_envelope(rast) geom,
-minimum((st_dumpvalues(rast)).valarray) min,
-q10((st_dumpvalues(rast)).valarray) q10,
-q25((st_dumpvalues(rast)).valarray) q25,
-median((st_dumpvalues(rast)).valarray) median,
-mean((st_dumpvalues(rast)).valarray) mean,
-q75((st_dumpvalues(rast)).valarray) q75,
-q90((st_dumpvalues(rast)).valarray) q90,
-maximum((st_dumpvalues(rast)).valarray) max
-from ",dem,") s
-where min>",minht," and max < ",maxht," and min <1000000000000;
-ALTER TABLE grat ADD COLUMN rid BIGSERIAL PRIMARY KEY;
-CREATE INDEX grat_gix ON grat USING GIST (geom);",sep="")
+(select
+geom,
+minimum(vals) min,
+q10(vals) q10,
+q25(vals) q25,
+median(vals) median,
+mean(vals) mean,
+q75(vals) q75,
+q90(vals) q90,
+maximum(vals) max
+from
+(select st_envelope(st_tile(rast,%s,%s)) geom,
+ st_tile(rast,%s,%s) rast,
+ (st_dumpvalues(st_tile(rast,%s,%s))).valarray vals
+  from %s) d
+) s
+where min>-10 and max < 10 and min <1000000000000;",xdim,ydim,xdim,ydim,xdim,ydim,dem)
+  
 odbcQuery(con,query)  
 query<-"
+ALTER TABLE grat ADD COLUMN rid BIGSERIAL PRIMARY KEY;
+CREATE INDEX grat_gix ON grat USING GIST (geom);
 ALTER TABLE grat ADD COLUMN psuitable numeric(3);
 "
 odbcQuery(con,query)
