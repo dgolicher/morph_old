@@ -1,0 +1,42 @@
+---
+title: "Using XTide"
+author: "Duncan Golicher"
+date: "06/12/2016"
+output: html_document
+---
+
+## 
+
+```{r}
+startchar = '2009-05-16 16:00'
+endchar = '2010-05-20 16:00'
+# Site name, taken from http://www.flaterco.com/xtide/locations.html
+sitename = 'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
+sitename<-'Cold Bay, Alaska'
+sitename<-'Morzhovoi Bay, Alaska'
+sitename<-'Morzhovoi Bay, Alaska'
+sitename<-'Lenard Harbor, Cold Bay, Alaska'
+
+tidecommand = paste('tide -l "',sitename,'" -b "',
+		startchar, '" -e "', endchar,
+		'" -f c -m m -s 00:60 -u m -z', sep = '')
+
+ss = system(tidecommand, intern = TRUE) #invoke tide.exe and return results
+# Convert the character strings in 'ss' into a data frame
+tides = read.table(textConnection(ss), sep = ',', colClasses = 'character')
+# Add column names to the data frame
+names(tides) = c('Site','Date','Hour','TideHt')
+# Combine the Date & Hour columns into a POSIX time stamp
+tides$Time = as.POSIXlt(paste(tides$Date,tides$Hour), 
+		format = "%Y-%m-%d %I:%M %p", tz = "US/Alaska")
+# Strip off the height units and convert tide height to numeric values
+tides$TideHt = as.numeric(gsub('[ [:alpha:]]',' ',tides$TideHt))
+# Create a column of time stamps in the current R session time zone
+tides$LocalTime = c(tides$Time)
+head(tides)
+
+
+
+
+```
+

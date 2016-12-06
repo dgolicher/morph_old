@@ -1,0 +1,104 @@
+conn=0xb1eef70, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xb1eef70, query=' '
+conn=0xb1eef70, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xb1eef70, query='set DateStyle to 'ISO''
+conn=0xb1eef70, query='set extra_float_digits to 2'
+conn=0xb1eef70, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xb1eef70, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xb1eef70, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xb1eef70, query='create extension postgis'
+ERROR from backend during send_query: 'ERROR:  extension "postgis" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xb1eef70, stmt=0x8bf4a70, result=0xb477730
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension postgis'
+                 stmt_with_params='create extension postgis'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x8bf4a70'
+                 ----------------QResult Info -------------------------------
+                 fields=0x2d11c70, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "postgis" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x7887d80, conn=0xb1eef70, status=1, num_stmts=16
+            sock=0x3866aa0, stmts=0x84f8e20, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=25, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=182226272, buffer_out=182230384
+            buffer_filled_in=46, buffer_filled_out=0, buffer_read_in=46
+conn=0xb1eef70, query='create extension plr'
+ERROR from backend during send_query: 'ERROR:  extension "plr" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xb1eef70, stmt=0x4be66e0, result=0x51acbe0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension plr'
+                 stmt_with_params='create extension plr'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x4be66e0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x8aac980, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "plr" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x7887d80, conn=0xb1eef70, status=1, num_stmts=16
+            sock=0x3866aa0, stmts=0x84f8e20, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=25, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=182226272, buffer_out=182230384
+            buffer_filled_in=42, buffer_filled_out=0, buffer_read_in=42
+conn=0xaeee400, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xaeee400, query=' '
+conn=0xaeee400, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xaeee400, query='set DateStyle to 'ISO''
+conn=0xaeee400, query='set extra_float_digits to 2'
+conn=0xaeee400, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xaeee400, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xaeee400, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xaeee400, PGAPI_Disconnect
+conn=0xb1eef70, PGAPI_Disconnect
