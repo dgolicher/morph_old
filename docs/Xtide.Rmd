@@ -5,19 +5,21 @@ date: "06/12/2016"
 output: html_document
 ---
 
-## 
+## Xtide stations
+
+
 
 ![alt text](/home/rstudio/morph/docs/xtide_alaska1.png)
 
 ```{r}
-startchar = '2009-05-16 16:00'
-endchar = '2010-05-20 16:00'
+library("date")
+startchar = '2016-01-01 01:00'
+endchar = '2017-01-01 01:00'
 # Site name, taken from http://www.flaterco.com/xtide/locations.html
-sitename = 'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
-sitename<-'Cold Bay, Alaska'
-sitename<-'Morzhovoi Bay, Alaska'
-sitename<-'Morzhovoi Bay, Alaska'
-sitename<-'Lenard Harbor, Cold Bay, Alaska'
+sitename <-'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
+#sitename<-'Cold Bay, Alaska'
+#sitename<-'Morzhovoi Bay, Alaska'
+#sitename<-'Lenard Harbor, Cold Bay, Alaska'
 
 tidecommand = paste('tide -l "',sitename,'" -b "',
 		startchar, '" -e "', endchar,
@@ -29,6 +31,7 @@ tides = read.table(textConnection(ss), sep = ',', colClasses = 'character')
 # Add column names to the data frame
 names(tides) = c('Site','Date','Hour','TideHt')
 # Combine the Date & Hour columns into a POSIX time stamp
+#tides$Date<-as.Date(tides$Date)
 tides$Time = as.POSIXlt(paste(tides$Date,tides$Hour), 
 		format = "%Y-%m-%d %I:%M %p", tz = "US/Alaska")
 # Strip off the height units and convert tide height to numeric values
@@ -41,4 +44,34 @@ head(tides)
 
 
 ```
+
+
+```{r}
+d<-data.frame(regime=1,Time=tides$Time,ht=tides$TideHt)
+head(d)
+write.table(d,"/home/rstudio/morph/tide1.csv",col.names = F,row.names=F,sep=",")
+
+```
+
+
+```{r}
+library(RODBC)
+con<-odbcConnect("brant")
+
+query<-"
+drop table if exists tides;
+create table tides
+(
+regime integer,
+time timestamp,
+ht float
+);"
+
+com<-"echo \"\\COPY tides FROM '/home/rstudio/morph/tide1.csv' DELIMITERS ',' CSV;\" | psql -h postgis -U docker -d brant"
+com
+system(com)
+
+sqlQuery(con,"select * from tides limit 10")
+```
+
 

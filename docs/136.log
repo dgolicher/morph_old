@@ -1,0 +1,605 @@
+conn=0x138c6900, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x138c6900, query=' '
+conn=0x138c6900, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x138c6900, query='set DateStyle to 'ISO''
+conn=0x138c6900, query='set extra_float_digits to 2'
+conn=0x138c6900, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x138c6900, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x138c6900, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x127675b0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x127675b0, query=' '
+conn=0x127675b0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x127675b0, query='set DateStyle to 'ISO''
+conn=0x127675b0, query='set extra_float_digits to 2'
+conn=0x127675b0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x127675b0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x127675b0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x127675b0, query='create table tides
+(
+id serial NOT NULL,
+regime integer,
+time timestamp,
+ht float,
+ CONSTRAINT prec_pkey PRIMARY KEY(id )
+)
+;
+ 
+COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x127675b0, stmt=0x12980a70, result=0x1294cfd0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create table tides
+(
+id serial NOT NULL,
+regime integer,
+time timestamp,
+ht float,
+ CONSTRAINT prec_pkey PRIMARY KEY(id )
+)
+;
+ 
+COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='create table tides
+(
+id serial NOT NULL,
+regime integer,
+time timestamp,
+ht float,
+ CONSTRAINT prec_pkey PRIMARY KEY(id )
+)
+;
+ 
+COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x12980a70'
+                 ----------------QResult Info -------------------------------
+                 fields=0x6ee5d10, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory', command='CREATE TABLE', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x127675b0, status=1, num_stmts=16
+            sock=0x12768100, stmts=0xe4ca370, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=17, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=309756384, buffer_out=309760496
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0x5640570, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x5640570, query=' '
+conn=0x5640570, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x5640570, query='set DateStyle to 'ISO''
+conn=0x5640570, query='set extra_float_digits to 2'
+conn=0x5640570, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x5640570, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x5640570, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x5640570, query='
+drop table if exists tides;
+create table tides
+(
+id serial NOT NULL,
+regime integer,
+time timestamp,
+ht float,
+ CONSTRAINT prec_pkey PRIMARY KEY(id )
+);'
+NOTICE from backend during send_query: 'NOTICE:  table "tides" does not exist, skipping'
+conn=0x12df3ae0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x12df3ae0, query=' '
+conn=0x12df3ae0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x12df3ae0, query='set DateStyle to 'ISO''
+conn=0x12df3ae0, query='set extra_float_digits to 2'
+conn=0x12df3ae0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x12df3ae0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x12df3ae0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x12df3ae0, query='
+drop table if exists tides;
+create table tides
+(
+id serial NOT NULL,
+regime integer,
+time timestamp,
+ht float,
+ CONSTRAINT prec_pkey PRIMARY KEY(id )
+);'
+conn=0x12df3ae0, query='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x12df3ae0, stmt=0x14182bc0, result=0x11741360
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x14182bc0'
+                 ----------------QResult Info -------------------------------
+                 fields=0xac18620, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x12df3ae0, status=1, num_stmts=16
+            sock=0x138b2bf0, stmts=0x115983c0, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=19, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=326098944, buffer_out=315790528
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0x1372c630, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x1372c630, query=' '
+conn=0x1372c630, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x1372c630, query='set DateStyle to 'ISO''
+conn=0x1372c630, query='set extra_float_digits to 2'
+conn=0x1372c630, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x1372c630, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x1372c630, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x1372c630, query='
+drop table if exists tides;
+create table tides
+(
+regime integer,
+time timestamp,
+ht float
+);'
+conn=0x1372c630, query='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x1372c630, stmt=0x14139c90, result=0x7073910
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x14139c90'
+                 ----------------QResult Info -------------------------------
+                 fields=0xd077240, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x1372c630, status=1, num_stmts=16
+            sock=0x117b8510, stmts=0x8ade2d0, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=20, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=315656048, buffer_out=328693968
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0x12df3ae0, PGAPI_Disconnect
+conn=0x5640570, PGAPI_Disconnect
+conn=0x5640570, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x5640570, query=' '
+conn=0x5640570, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x5640570, query='set DateStyle to 'ISO''
+conn=0x5640570, query='set extra_float_digits to 2'
+conn=0x5640570, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x5640570, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x5640570, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x5640570, query='
+drop table if exists tides;
+create table tides
+(
+regime integer,
+date date,
+ht float
+);'
+conn=0x5640570, query='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x5640570, stmt=0x14182bc0, result=0xbfd2d00
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x14182bc0'
+                 ----------------QResult Info -------------------------------
+                 fields=0xa92c3e0, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x5640570, status=1, num_stmts=16
+            sock=0x13529770, stmts=0xebef010, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=18, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=340892848, buffer_out=327444816
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0x5640570, query='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x5640570, stmt=0x54efea0, result=0x9cc0230
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x54efea0'
+                 ----------------QResult Info -------------------------------
+                 fields=0xabe1c60, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x5640570, status=1, num_stmts=16
+            sock=0x13529770, stmts=0xebef010, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=18, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=340892848, buffer_out=327444816
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0x109ef1b0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x109ef1b0, query=' '
+conn=0x109ef1b0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x109ef1b0, query='set DateStyle to 'ISO''
+conn=0x109ef1b0, query='set extra_float_digits to 2'
+conn=0x109ef1b0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x109ef1b0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x109ef1b0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x109ef1b0, query='
+drop table if exists tides;
+create table tides
+(
+regime integer,
+date date,
+ht float
+);'
+conn=0x109ef1b0, query='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x109ef1b0, stmt=0x10ae5020, result=0x118a63b0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/rstudio/morph/data/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x10ae5020'
+                 ----------------QResult Info -------------------------------
+                 fields=0x80d3a20, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/data/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x109ef1b0, status=1, num_stmts=16
+            sock=0x10a89f70, stmts=0x105b39c0, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=19, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=278480752, buffer_out=121065568
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0x1081d250, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x1081d250, query=' '
+conn=0x1081d250, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x1081d250, query='set DateStyle to 'ISO''
+conn=0x1081d250, query='set extra_float_digits to 2'
+conn=0x1081d250, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x1081d250, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x1081d250, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x1081d250, query='
+drop table if exists tides;
+create table tides
+(
+regime integer,
+time timestamp,
+ht float
+);'
+conn=0x1081d250, query='COPY tides FROM '/home/duncan/rstudio_server/morph/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/duncan/rstudio_server/morph/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x1081d250, stmt=0x7370350, result=0x12abafe0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/duncan/rstudio_server/morph/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/duncan/rstudio_server/morph/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x7370350'
+                 ----------------QResult Info -------------------------------
+                 fields=0xea9f420, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/duncan/rstudio_server/morph/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/duncan/rstudio_server/morph/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x1081d250, status=1, num_stmts=16
+            sock=0x13cc2400, stmts=0x135296c0, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=21, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=316038832, buffer_out=313018656
+            buffer_filled_in=116, buffer_filled_out=0, buffer_read_in=116
+conn=0x108202d0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x108202d0, query=' '
+conn=0x108202d0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x108202d0, query='set DateStyle to 'ISO''
+conn=0x108202d0, query='set extra_float_digits to 2'
+conn=0x108202d0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x108202d0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x108202d0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x108202d0, query='
+drop table if exists tides;
+create table tides
+(
+regime integer,
+time timestamp,
+ht float
+);'
+conn=0x108202d0, query='COPY tides FROM '/home/rstudio/morph/tide1.csv' DELIMITERS ',' CSV;'
+ERROR from backend during send_query: 'ERROR:  could not open file "/home/rstudio/morph/tide1.csv" for reading: No such file or directory'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x108202d0, stmt=0x142a51b0, result=0x907c260
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=25, statement='COPY tides FROM '/home/rstudio/morph/tide1.csv' DELIMITERS ',' CSV;'
+                 stmt_with_params='COPY tides FROM '/home/rstudio/morph/tide1.csv' DELIMITERS ',' CSV;'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x142a51b0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x302a6d0, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  could not open file "/home/rstudio/morph/tide1.csv" for reading: No such file or directory', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  could not open file "/home/rstudio/morph/tide1.csv" for reading: No such file or directory'
+            ------------------------------------------------------------
+            henv=0x459eee0, conn=0x108202d0, status=1, num_stmts=16
+            sock=0x104c1c20, stmts=0x6f05400, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=22, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=276937312, buffer_out=240365872
+            buffer_filled_in=102, buffer_filled_out=0, buffer_read_in=102
+conn=0x1081d250, PGAPI_Disconnect
+conn=0x1081d250, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x1081d250, query=' '
+conn=0x1081d250, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x1081d250, query='set DateStyle to 'ISO''
+conn=0x1081d250, query='set extra_float_digits to 2'
+conn=0x1081d250, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x1081d250, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x1081d250, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x556dcf0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x556dcf0, query=' '
+conn=0x556dcf0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x556dcf0, query='set DateStyle to 'ISO''
+conn=0x556dcf0, query='set extra_float_digits to 2'
+conn=0x556dcf0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x556dcf0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x556dcf0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x556dcf0, query='select * from tides limit 10'
+    [ fetched 10 rows ]
+conn=0x1081d250, PGAPI_Disconnect
+conn=0x7306ff0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x7306ff0, query=' '
+conn=0x7306ff0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x7306ff0, query='set DateStyle to 'ISO''
+conn=0x7306ff0, query='set extra_float_digits to 2'
+conn=0x7306ff0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x7306ff0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x7306ff0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x7306ff0, query='select * from tides limit 10'
+    [ fetched 10 rows ]
+conn=0x7306ff0, query='select * from tides limit 10'
+    [ fetched 10 rows ]
