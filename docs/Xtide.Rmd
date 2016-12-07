@@ -42,9 +42,9 @@ endchar <- '2018-01-01 01:00'
 site1 <-'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
 site2<-'Cold Bay, Alaska'
 site3<-'Morzhovoi Bay, Alaska'
-site4<-'Amak Island, 5 miles southeast of, Alaska Current'
-site5<-'St. Catherine Cove, Unimak Island, Alaska'
-site6<-'Bechevin Bay, off Rocky Point, Alaska Current'
+#site4<-'Amak Island, 5 miles southeast of, Alaska Current'
+site4<-'St. Catherine Cove, Unimak Island, Alaska'
+#site6<-'Bechevin Bay, off Rocky Point, Alaska Current'
 
 get_tides<-function(sitename=site1)
 {
@@ -80,12 +80,8 @@ tides<-get_tides(site3)
 d2<-data.frame(station=3,nm="Morz",time=tides$Time,ht=tides$TideHt)
 d<-rbind(d,d2)
 tides<-get_tides(site4)
-d2<-data.frame(station=4,nm="Amak",time=tides$Time,ht=tides$TideHt)
+d2<-data.frame(station=4,nm="StCath",time=tides$Time,ht=tides$TideHt)
 d<-rbind(d,d2)
-tides<-get_tides(site5)
-d2<-data.frame(station=5,nm="StCat",time=tides$Time,ht=tides$TideHt)
-d<-rbind(d,d2)
-
 
 ```
 
@@ -137,6 +133,17 @@ g0<-ggplot(d,aes(x=time,y=ht,col=name))
 g1<-g0+geom_line()  
 ggplotly(g1)
 
+
+```
+
+## Example query
+
+```{R,eval=FALSE}
+select rid, St_X(st_centroid(geom)),St_Y(st_centroid(geom)),PSuitable(array[min,q10,q25,median,q75,q90,max],array[0,10,25,50,75,90,100],-0.5,1,ht) psuit
+from
+grat g,
+(select * from tides where time = '2017-01-01 :01:00:00') t
+where g.station=t.station
 
 ```
 

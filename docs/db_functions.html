@@ -426,7 +426,7 @@ CREATE INDEX grat_gix ON grat USING GIST (geom);&quot;,resource,resource,resourc
 <div id="extracting-attribute-to-grat-from-vector-polygon-layer" class="section level2">
 <h2>Extracting attribute to grat from vector polygon layer</h2>
 <p>The idea behind this function is quite specific to MoRph, but can be adapted. Assuming that there is a polyon layer loaded using PgLoadVector. The example is a layer with codes representing the tide regime in each bay. Some of the graticule patches may possiby overlap the boundary between tide regimes but only one of the values is needed. The function simply chooses (arbitrarily) the minimum value. This is not going to be a problem in most cases as the boundary is also fairly arbitrary.</p>
-<pre class="r"><code>PgAddVector&lt;-function(db=&quot;brant&quot;,l1=&quot;grat&quot;,l2=&quot;tide_regime&quot;,col=&quot;tide&quot;){
+<pre class="r"><code>PgAddVector&lt;-function(db=&quot;brant&quot;,l1=&quot;grat&quot;,l2=&quot;tide_regime&quot;,col=&quot;stat&quot;){
   require(RODBC)
   con&lt;-odbcConnect(db)
   query&lt;-sprintf(&quot;
@@ -478,8 +478,10 @@ PgMakeGrat(xdim=20,ydim=20)</code></pre>
 <pre class="r"><code>PgAddResource()</code></pre>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>PgLoadVector()
-#PgAddVector()
-grat&lt;-PgGetQuery()</code></pre>
+PgAddVector()</code></pre>
+<pre><code>## [1] -1</code></pre>
+<pre class="r"><code>grat&lt;-PgGetQuery()</code></pre>
+<pre><code>## Warning: closing unused RODBC handle 6</code></pre>
 <pre><code>## Warning: closing unused RODBC handle 5</code></pre>
 <pre><code>## Warning: closing unused RODBC handle 4</code></pre>
 <pre><code>## Warning: closing unused RODBC handle 3</code></pre>
@@ -490,7 +492,7 @@ grat&lt;-PgGetQuery()</code></pre>
 ## with 1326 features
 ## It has 13 fields</code></pre>
 <pre class="r"><code>library(raster)</code></pre>
-<pre><code>## Warning: closing unused RODBC handle 6</code></pre>
+<pre><code>## Warning: closing unused RODBC handle 7</code></pre>
 <pre class="r"><code>library(dismo)
 library(ggplot2)
 r&lt;-raster(&quot;/home/rstudio/morph/rasters/dem.tif&quot;)

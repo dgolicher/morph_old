@@ -374,7 +374,7 @@ CREATE INDEX grat_gix ON grat USING GIST (geom);",resource,resource,resource)
 The idea behind this function is quite specific to MoRph, but can be adapted. Assuming that there is a polyon layer loaded using PgLoadVector. The example is a layer with codes representing the tide regime in each bay. Some of the graticule patches may possiby overlap the boundary between tide regimes but only one of the values is needed. The function simply chooses (arbitrarily) the minimum value. This is not going to be a problem in most cases as the boundary is also fairly arbitrary.
 
 ```{r}
-PgAddVector<-function(db="brant",l1="grat",l2="tide_regime",col="tide"){
+PgAddVector<-function(db="brant",l1="grat",l2="tide_regime",col="stat"){
   require(RODBC)
   con<-odbcConnect(db)
   query<-sprintf("
@@ -434,7 +434,7 @@ PgMakeGrat(xdim=20,ydim=20)
 PgPSuitable()
 PgAddResource()
 PgLoadVector()
-#PgAddVector()
+PgAddVector()
 grat<-PgGetQuery()
 
 library(raster)
