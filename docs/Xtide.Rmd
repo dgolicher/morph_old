@@ -1,26 +1,53 @@
 ---
-title: "Using XTide"
+title: "Loading XTide data"
 author: "Duncan Golicher"
 date: "06/12/2016"
 output: html_document
 ---
 
+# Introduction
+
+XTide is a free program that uses harmonic files generated from empirical tide measurements to produce tide predictions using an algorithm for any date and year.  
+
 ## Xtide stations
 
+The network of harmonic files is very dense for most of the USA. There are also sites available in the UK and Holland if the older harmonics file is used. This is not available directly through the rtide package, but is included in the Xtide command line interface that is included in the Linux installation. 
 
+![](/home/rstudio/morph/docs/xtide_sites.png)
+### Alaska stations
 
-![alt text](/home/rstudio/morph/docs/xtide_alaska1.png)
+![](/home/rstudio/morph/docs/xtide_alaska1.png)
+
+The line below adds all the sites to the database (providing that one exists).
+
+```{r,eval=FALSE}
+source("/home/rstudio/morph/scripts/db_functions.R")
+## Assuming the Brant database exists
+PgLoadVector(flnm="xtide_sites",tabnm="xtide_sites",db="brant",srid=4326,path="/home/rstudio/morph/shapefiles/")
+```
+
+## Loading sites into the data base
+
+Because the rtide package comes with a more limited set of harmonics files I use the code provided by Luke Miller to run Xtide commands in R
+
+http://lukemiller.org/index.php/2013/05/interfacing-xtide-and-r/
+
+I will extract two year's worth of data. As 2016 is a leap year and 2017 is not these can be used as surrogates for future years.
 
 ```{r}
 library("date")
-startchar = '2015-01-01 01:00'
-endchar = '2020-01-01 01:00'
+startchar <- '2016-01-01 01:00'
+endchar <- '2018-01-01 01:00'
 # Site name, taken from http://www.flaterco.com/xtide/locations.html
-sitename <-'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
-#sitename<-'Cold Bay, Alaska'
-#sitename<-'Morzhovoi Bay, Alaska'
-#sitename<-'Lenard Harbor, Cold Bay, Alaska'
+site1 <-'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
+site2<-'Cold Bay, Alaska'
+site3<-'Morzhovoi Bay, Alaska'
+site4<-'Amak Island, 5 miles southeast of, Alaska Current'
+site5<-'St. Catherine Cove, Unimak Island, Alaska'
+site6<-'Bechevin Bay, off Rocky Point, Alaska Current'
 
+get_tides<-function(sitename=site1)
+{
 tidecommand = paste('tide -l "',sitename,'" -b "',
 		startchar, '" -e "', endchar,
 		'" -f c -m m -s 00:60 -u m -z', sep = '')
@@ -37,41 +64,79 @@ tides$Time = as.POSIXlt(paste(tides$Date,tides$Hour),
 # Strip off the height units and convert tide height to numeric values
 tides$TideHt = as.numeric(gsub('[ [:alpha:]]',' ',tides$TideHt))
 # Create a column of time stamps in the current R session time zone
-tides$LocalTime = c(tides$Time)
-head(tides)
-
-
-
+# tides$LocalTime = c(tides$Time)
+tides}
 
 ```
-
 
 ```{r}
-d<-data.frame(regime=1,Time=tides$Time,ht=tides$TideHt)
-head(d)
-write.table(d,"/home/rstudio/morph/tide1.csv",col.names = F,row.names=F,sep=",")
+
+tides<-get_tides(site1)
+d<-data.frame(station=1,nm="Grant",time=tides$Time,ht=tides$TideHt)
+tides<-get_tides(site2)
+d2<-data.frame(station=2,nm="Cold",time=tides$Time,ht=tides$TideHt)
+d<-rbind(d,d2)
+tides<-get_tides(site3)
+d2<-data.frame(station=3,nm="Morz",time=tides$Time,ht=tides$TideHt)
+d<-rbind(d,d2)
+tides<-get_tides(site4)
+d2<-data.frame(station=4,nm="Amak",time=tides$Time,ht=tides$TideHt)
+d<-rbind(d,d2)
+tides<-get_tides(site5)
+d2<-data.frame(station=5,nm="StCat",time=tides$Time,ht=tides$TideHt)
+d<-rbind(d,d2)
+
 
 ```
 
+
+## Loading the table into the database
+
+The table is simplified to contain only three columns. The station is just an integer value (so you need to remember which one was used). The time is held as a timestamp.
+The most robust way to load data into PostGIS is to save the dataframe locally (a temporary file can be used and removed by another command) and then use a copy command. This requires the fields of the data table to be set up first. They must of course correspond to the format of the data to be loaded.
+Because the database server is in another docker container the copy command cannot be used as an ODBC query, as the path would be to a file within the container. This can be got around by using a /Copy command piped into the local psql client. Copying data in this way is almost instantaneous. 
 
 ```{r}
 library(RODBC)
 con<-odbcConnect("brant")
 
+write.table(d,"/home/rstudio/morph/tmp.csv",col.names = F,row.names=F,sep=",")
+
 query<-"
 drop table if exists tides;
 create table tides
 (
-regime integer,
+station integer,
+name varchar(6),
 time timestamp,
 ht float
 );"
-
-com<-"echo \"\\COPY tides FROM '/home/rstudio/morph/tide1.csv' DELIMITERS ',' CSV;\" | psql -h postgis -U docker -d brant"
+odbcQuery(con,query)
+com<-"echo \"\\COPY tides FROM '/home/rstudio/morph/tmp.csv' DELIMITERS ',' CSV;\" | psql -h postgis -U docker -d brant"
 com
 system(com)
+com<-"rm /home/rstudio/morph/tmp.csv"
+system(com)
 
-sqlQuery(con,"select * from tides limit 10")
 ```
 
+## Test that its worked
+
+Extract a month's worth of data and plot it
+
+```{r}
+d<-sqlQuery(con,"select extract(hour from time) hr,* from tides WHERE time >= '2016-01-01'
+AND time < '2016-02-02' order by hr")
+```
+
+```{r}
+library(plotly)
+library(ggplot2)
+d$station<-as.factor(d$station)
+g0<-ggplot(d,aes(x=time,y=ht,col=name))
+g1<-g0+geom_line()  
+ggplotly(g1)
+
+
+```
 
