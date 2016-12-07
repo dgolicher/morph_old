@@ -398,6 +398,28 @@ odbcQuery(con,query)
 ```
 
 
+## Backing up and restoring data bases
+
+```{r}
+
+PgBackupDb<-function(dbname="brant",path="/home/rstudio/morph/databases/",flnm="brant.backup"){
+  flnm<-paste(path,flnm,sep="")
+  com<-paste("pg_dump -h postgis -U docker ",dbname, "> ",flnm, sep="")
+  system(com)
+ }
+```
+
+
+```{r}
+PgRestoreDb<-function(dbname="brant",path="/home/rstudio/morph/databases/",flnm="brant.backup"){
+  flnm<-paste(path,flnm,sep="")
+  com<-paste("psql -h postgis -U docker ",dbname, " <  ",flnm, sep="")
+   system(com)
+}
+
+```
+
+
 ## Putting them all together as a test
 
 ```{r,message=FALSE,eval=TRUE}

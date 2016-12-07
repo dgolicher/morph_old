@@ -13,8 +13,8 @@ output: html_document
 
 ```{r}
 library("date")
-startchar = '2016-01-01 01:00'
-endchar = '2017-01-01 01:00'
+startchar = '2015-01-01 01:00'
+endchar = '2020-01-01 01:00'
 # Site name, taken from http://www.flaterco.com/xtide/locations.html
 sitename <-'Grant Point, Izembek Lagoon, Bristol Bay, Alaska'
 #sitename<-'Cold Bay, Alaska'

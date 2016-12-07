@@ -603,3 +603,11 @@ conn=0x7306ff0, query='select * from tides limit 10'
     [ fetched 10 rows ]
 conn=0x7306ff0, query='select * from tides limit 10'
     [ fetched 10 rows ]
+conn=0x7306ff0, PGAPI_Disconnect
+conn=0x556dcf0, PGAPI_Disconnect
+conn=0x108202d0, PGAPI_Disconnect
+conn=0x109ef1b0, PGAPI_Disconnect
+conn=0x5640570, PGAPI_Disconnect
+conn=0x1372c630, PGAPI_Disconnect
+conn=0x127675b0, PGAPI_Disconnect
+conn=0x138c6900, PGAPI_Disconnect
