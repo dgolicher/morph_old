@@ -1,0 +1,13 @@
+source("/home/rstudio/morph/scripts/db_functions.R")
+PgMakeDb("brant")
+PgInit("brant")
+PgPlr("brant")
+PgLoadRaster()
+PgMakeGrat(xdim=20,ydim=20)
+PgPSuitable()
+PgAddResource()
+PgLoadVector()
+PgAddVector()
+source("/home/rstudio/morph/scripts/Xtide.R")
+PgBackupDb()
+

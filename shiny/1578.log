@@ -1,0 +1,1703 @@
+conn=0x9f43d10, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x9f43d10, query=' '
+conn=0x9f43d10, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x9f43d10, query='set DateStyle to 'ISO''
+conn=0x9f43d10, query='set extra_float_digits to 2'
+conn=0x9f43d10, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x9f43d10, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x9f43d10, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x9f43d10, query='create extension postgis'
+ERROR from backend during send_query: 'ERROR:  extension "postgis" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x9f43d10, stmt=0xa4bc100, result=0x1bf39c0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension postgis'
+                 stmt_with_params='create extension postgis'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa4bc100'
+                 ----------------QResult Info -------------------------------
+                 fields=0x85e8380, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "postgis" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x23bf180, conn=0x9f43d10, status=1, num_stmts=16
+            sock=0x98c53a0, stmts=0x8bace20, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=16, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173952480, buffer_out=162945264
+            buffer_filled_in=46, buffer_filled_out=0, buffer_read_in=46
+conn=0x9f43d10, query='create extension plr'
+ERROR from backend during send_query: 'ERROR:  extension "plr" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x9f43d10, stmt=0xa039ad0, result=0x815dc60
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension plr'
+                 stmt_with_params='create extension plr'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa039ad0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x8bfcb30, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "plr" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x23bf180, conn=0x9f43d10, status=1, num_stmts=16
+            sock=0x98c53a0, stmts=0x8bace20, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=16, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173952480, buffer_out=162945264
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0xa781da0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa781da0, query=' '
+conn=0xa781da0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa781da0, query='set DateStyle to 'ISO''
+conn=0xa781da0, query='set extra_float_digits to 2'
+conn=0xa781da0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa781da0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa781da0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa781da0, query='CREATE OR REPLACE FUNCTION median (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+median(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q10 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.1,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q90 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.9,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q75 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.75,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q25 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.25,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION minimum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+min(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION maximum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+max(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION mean (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+mean(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION sd (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION se (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)/sqrt(length(x))'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION length (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+length(x)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION PSuitable (float[],float[],float,float,float) RETURNS float AS '
+x<-arg1
+q<-arg2
+depth<-arg3
+ht<-arg4
+tide<-arg5
+depth<-depth+tide
+x2<-q[x>=depth&x<=ht]
+x2<-max(x2)-min(x2)
+if(is.na(x2))x2<-0
+if(x2==-Inf)x2<-0
+x2'
+LANGUAGE 'plr' STRICT;
+
+'
+conn=0xa617330, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa617330, query=' '
+conn=0xa617330, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa617330, query='set DateStyle to 'ISO''
+conn=0xa617330, query='set extra_float_digits to 2'
+conn=0xa617330, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa617330, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa617330, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa617330, query='
+                 drop table if exists grat;
+                 create table grat as
+                 select s.* from
+                 (select
+                 geom,
+                 st_area(geom)/1000000 areakm2,
+                 minimum(vals) min,
+                 q10(vals) q10,
+                 q25(vals) q25,
+                 median(vals) median,
+                 mean(vals) mean,
+                 q75(vals) q75,
+                 q90(vals) q90,
+                 maximum(vals) max
+                 from
+                 (select st_envelope(st_tile(rast,20,20)) geom,
+                 st_tile(rast,20,20) rast,
+                 (st_dumpvalues(st_tile(rast,20,20))).valarray vals
+                 from dem) d
+                 ) s
+                 where min>-10 and max < 10 and min <1000000000000;'
+conn=0xa617330, query='
+ALTER TABLE grat ADD COLUMN rid BIGSERIAL PRIMARY KEY;
+CREATE INDEX grat_gix ON grat USING GIST (geom);
+ALTER TABLE grat ADD COLUMN psuitable numeric(3);
+'
+conn=0x9ac3e70, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x9ac3e70, query=' '
+conn=0x9ac3e70, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x9ac3e70, query='set DateStyle to 'ISO''
+conn=0x9ac3e70, query='set extra_float_digits to 2'
+conn=0x9ac3e70, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x9ac3e70, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x9ac3e70, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x9ac3e70, query='update grat set psuitable = PSuitable(array[min,q10,q25,median,q75,q90,max],array[0,10,25,50,75,90,100],-2,5,0);'
+conn=0x19293e0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x19293e0, query=' '
+conn=0x19293e0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x19293e0, query='set DateStyle to 'ISO''
+conn=0x19293e0, query='set extra_float_digits to 2'
+conn=0x19293e0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x19293e0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x19293e0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x19293e0, query='create table tmp as
+select g.*,
+med median_dem,
+mn mean_dem
+from 
+grat g,
+(select 
+t2.rid,
+median((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) med,
+mean((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) mn
+from dem t,
+(select * from grat) t2
+where st_intersects(rast,geom)
+group by t2.rid) s
+where s.rid=g.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+conn=0xa6bf210, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa6bf210, query=' '
+conn=0xa6bf210, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa6bf210, query='set DateStyle to 'ISO''
+conn=0xa6bf210, query='set extra_float_digits to 2'
+conn=0xa6bf210, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa6bf210, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa6bf210, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa6bf210, query='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+NOTICE from backend during send_query: 'NOTICE:  table "tmp" does not exist, skipping'
+ERROR from backend during send_query: 'ERROR:  column "tide" does not exist at character 99'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xa6bf210, stmt=0x6637770, result=0x9f79d70
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=7, statement='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 stmt_with_params='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x6637770'
+                 ----------------QResult Info -------------------------------
+                 fields=0x638f6c0, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  column "tide" does not exist at character 99', command='DROP TABLE', notice='NOTICE:  table "tmp" does not exist, skipping'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  column "tide" does not exist at character 99'
+            ------------------------------------------------------------
+            henv=0x23bf180, conn=0xa6bf210, status=1, num_stmts=16
+            sock=0x8a35570, stmts=0x76ad560, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=17, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=172576848, buffer_out=172580960
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0xa6bf210, PGAPI_Disconnect
+conn=0x19293e0, PGAPI_Disconnect
+conn=0x9ac3e70, PGAPI_Disconnect
+conn=0xa617330, PGAPI_Disconnect
+conn=0xa781da0, PGAPI_Disconnect
+conn=0x9f43d10, PGAPI_Disconnect
+conn=0x9f43d10, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x9f43d10, query=' '
+conn=0x9f43d10, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x9f43d10, query='set DateStyle to 'ISO''
+conn=0x9f43d10, query='set extra_float_digits to 2'
+conn=0x9f43d10, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x9f43d10, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x9f43d10, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x9f43d10, query='create extension postgis'
+ERROR from backend during send_query: 'ERROR:  extension "postgis" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x9f43d10, stmt=0x98dc5f0, result=0x9fdf090
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension postgis'
+                 stmt_with_params='create extension postgis'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x98dc5f0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x827da60, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "postgis" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0x9f43d10, status=1, num_stmts=16
+            sock=0x896bba0, stmts=0x972ac40, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=13, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173952480, buffer_out=162945264
+            buffer_filled_in=46, buffer_filled_out=0, buffer_read_in=46
+conn=0x9f43d10, query='create extension plr'
+ERROR from backend during send_query: 'ERROR:  extension "plr" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0x9f43d10, stmt=0xa011970, result=0x58e6930
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension plr'
+                 stmt_with_params='create extension plr'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa011970'
+                 ----------------QResult Info -------------------------------
+                 fields=0x9eec8b0, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "plr" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0x9f43d10, status=1, num_stmts=16
+            sock=0x896bba0, stmts=0x972ac40, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=13, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173952480, buffer_out=162945264
+            buffer_filled_in=42, buffer_filled_out=0, buffer_read_in=42
+conn=0xa781da0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa781da0, query=' '
+conn=0xa781da0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa781da0, query='set DateStyle to 'ISO''
+conn=0xa781da0, query='set extra_float_digits to 2'
+conn=0xa781da0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa781da0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa781da0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa781da0, query='CREATE OR REPLACE FUNCTION median (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+median(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q10 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.1,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q90 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.9,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q75 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.75,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q25 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.25,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION minimum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+min(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION maximum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+max(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION mean (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+mean(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION sd (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION se (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)/sqrt(length(x))'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION length (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+length(x)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION PSuitable (float[],float[],float,float,float) RETURNS float AS '
+x<-arg1
+q<-arg2
+depth<-arg3
+ht<-arg4
+tide<-arg5
+depth<-depth+tide
+x2<-q[x>=depth&x<=ht]
+x2<-max(x2)-min(x2)
+if(is.na(x2))x2<-0
+if(x2==-Inf)x2<-0
+x2'
+LANGUAGE 'plr' STRICT;
+
+'
+conn=0xa617330, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa617330, query=' '
+conn=0xa617330, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa617330, query='set DateStyle to 'ISO''
+conn=0xa617330, query='set extra_float_digits to 2'
+conn=0xa617330, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa617330, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa617330, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa617330, query='
+                 drop table if exists grat;
+                 create table grat as
+                 select s.* from
+                 (select
+                 geom,
+                 st_area(geom)/1000000 areakm2,
+                 minimum(vals) min,
+                 q10(vals) q10,
+                 q25(vals) q25,
+                 median(vals) median,
+                 mean(vals) mean,
+                 q75(vals) q75,
+                 q90(vals) q90,
+                 maximum(vals) max
+                 from
+                 (select st_envelope(st_tile(rast,20,20)) geom,
+                 st_tile(rast,20,20) rast,
+                 (st_dumpvalues(st_tile(rast,20,20))).valarray vals
+                 from dem) d
+                 ) s
+                 where min>-10 and max < 10 and min <1000000000000;'
+conn=0xa617330, query='
+ALTER TABLE grat ADD COLUMN rid BIGSERIAL PRIMARY KEY;
+CREATE INDEX grat_gix ON grat USING GIST (geom);
+ALTER TABLE grat ADD COLUMN psuitable numeric(3);
+'
+conn=0x9ac3e70, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x9ac3e70, query=' '
+conn=0x9ac3e70, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x9ac3e70, query='set DateStyle to 'ISO''
+conn=0x9ac3e70, query='set extra_float_digits to 2'
+conn=0x9ac3e70, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x9ac3e70, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x9ac3e70, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x9ac3e70, query='update grat set psuitable = PSuitable(array[min,q10,q25,median,q75,q90,max],array[0,10,25,50,75,90,100],-2,5,0);'
+conn=0x9f9c520, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x9f9c520, query=' '
+conn=0x9f9c520, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x9f9c520, query='set DateStyle to 'ISO''
+conn=0x9f9c520, query='set extra_float_digits to 2'
+conn=0x9f9c520, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x9f9c520, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x9f9c520, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x9f9c520, query='create table tmp as
+select g.*,
+med median_dem,
+mn mean_dem
+from 
+grat g,
+(select 
+t2.rid,
+median((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) med,
+mean((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) mn
+from dem t,
+(select * from grat) t2
+where st_intersects(rast,geom)
+group by t2.rid) s
+where s.rid=g.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+conn=0xa68bb40, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa68bb40, query=' '
+conn=0xa68bb40, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa68bb40, query='set DateStyle to 'ISO''
+conn=0xa68bb40, query='set extra_float_digits to 2'
+conn=0xa68bb40, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa68bb40, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa68bb40, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa68bb40, query='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+NOTICE from backend during send_query: 'NOTICE:  table "tmp" does not exist, skipping'
+ERROR from backend during send_query: 'ERROR:  column "tide" does not exist at character 99'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xa68bb40, stmt=0x8243710, result=0x87f78c0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=7, statement='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 stmt_with_params='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x8243710'
+                 ----------------QResult Info -------------------------------
+                 fields=0x27890b0, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  column "tide" does not exist at character 99', command='DROP TABLE', notice='NOTICE:  table "tmp" does not exist, skipping'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  column "tide" does not exist at character 99'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xa68bb40, status=1, num_stmts=16
+            sock=0x5785580, stmts=0x847dd40, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=19, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173248752, buffer_out=173252864
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0xa6bf210, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa6bf210, query=' '
+conn=0xa6bf210, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa6bf210, query='set DateStyle to 'ISO''
+conn=0xa6bf210, query='set extra_float_digits to 2'
+conn=0xa6bf210, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa6bf210, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa6bf210, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa6bf210, query='create extension postgis'
+ERROR from backend during send_query: 'ERROR:  extension "postgis" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xa6bf210, stmt=0xa039ad0, result=0x1bf39c0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension postgis'
+                 stmt_with_params='create extension postgis'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa039ad0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x66bb400, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "postgis" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xa6bf210, status=1, num_stmts=16
+            sock=0x59a8990, stmts=0x762d290, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=22, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173559088, buffer_out=173724176
+            buffer_filled_in=46, buffer_filled_out=0, buffer_read_in=46
+conn=0xa6bf210, query='create extension plr'
+ERROR from backend during send_query: 'ERROR:  extension "plr" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xa6bf210, stmt=0x98dc5f0, result=0x1bf39c0
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension plr'
+                 stmt_with_params='create extension plr'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0x98dc5f0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x5916650, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "plr" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xa6bf210, status=1, num_stmts=16
+            sock=0x59a8990, stmts=0x762d290, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=22, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=173559088, buffer_out=173724176
+            buffer_filled_in=42, buffer_filled_out=0, buffer_read_in=42
+conn=0xa57b800, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa57b800, query=' '
+conn=0xa57b800, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa57b800, query='set DateStyle to 'ISO''
+conn=0xa57b800, query='set extra_float_digits to 2'
+conn=0xa57b800, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa57b800, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa57b800, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa57b800, query='CREATE OR REPLACE FUNCTION median (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+median(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q10 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.1,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q90 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.9,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q75 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.75,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q25 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.25,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION minimum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+min(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION maximum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+max(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION mean (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+mean(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION sd (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION se (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)/sqrt(length(x))'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION length (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+length(x)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION PSuitable (float[],float[],float,float,float) RETURNS float AS '
+x<-arg1
+q<-arg2
+depth<-arg3
+ht<-arg4
+tide<-arg5
+depth<-depth+tide
+x2<-q[x>=depth&x<=ht]
+x2<-max(x2)-min(x2)
+if(is.na(x2))x2<-0
+if(x2==-Inf)x2<-0
+x2'
+LANGUAGE 'plr' STRICT;
+
+'
+conn=0xa6c01e0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa6c01e0, query=' '
+conn=0xa6c01e0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa6c01e0, query='set DateStyle to 'ISO''
+conn=0xa6c01e0, query='set extra_float_digits to 2'
+conn=0xa6c01e0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa6c01e0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa6c01e0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa6c01e0, query='
+                 drop table if exists grat;
+                 create table grat as
+                 select s.* from
+                 (select
+                 geom,
+                 st_area(geom)/1000000 areakm2,
+                 minimum(vals) min,
+                 q10(vals) q10,
+                 q25(vals) q25,
+                 median(vals) median,
+                 mean(vals) mean,
+                 q75(vals) q75,
+                 q90(vals) q90,
+                 maximum(vals) max
+                 from
+                 (select st_envelope(st_tile(rast,20,20)) geom,
+                 st_tile(rast,20,20) rast,
+                 (st_dumpvalues(st_tile(rast,20,20))).valarray vals
+                 from dem) d
+                 ) s
+                 where min>-10 and max < 10 and min <1000000000000;'
+conn=0xa6c01e0, query='
+ALTER TABLE grat ADD COLUMN rid BIGSERIAL PRIMARY KEY;
+CREATE INDEX grat_gix ON grat USING GIST (geom);
+ALTER TABLE grat ADD COLUMN psuitable numeric(3);
+'
+conn=0x9608290, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0x9608290, query=' '
+conn=0x9608290, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0x9608290, query='set DateStyle to 'ISO''
+conn=0x9608290, query='set extra_float_digits to 2'
+conn=0x9608290, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0x9608290, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0x9608290, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0x9608290, query='update grat set psuitable = PSuitable(array[min,q10,q25,median,q75,q90,max],array[0,10,25,50,75,90,100],-2,5,0);'
+conn=0xa67fac0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa67fac0, query=' '
+conn=0xa67fac0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa67fac0, query='set DateStyle to 'ISO''
+conn=0xa67fac0, query='set extra_float_digits to 2'
+conn=0xa67fac0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa67fac0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa67fac0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa67fac0, query='create table tmp as
+select g.*,
+med median_dem,
+mn mean_dem
+from 
+grat g,
+(select 
+t2.rid,
+median((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) med,
+mean((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) mn
+from dem t,
+(select * from grat) t2
+where st_intersects(rast,geom)
+group by t2.rid) s
+where s.rid=g.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+conn=0xa5782c0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xa5782c0, query=' '
+conn=0xa5782c0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xa5782c0, query='set DateStyle to 'ISO''
+conn=0xa5782c0, query='set extra_float_digits to 2'
+conn=0xa5782c0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xa5782c0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xa5782c0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xa5782c0, query='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+NOTICE from backend during send_query: 'NOTICE:  table "tmp" does not exist, skipping'
+ERROR from backend during send_query: 'ERROR:  column "tide" does not exist at character 99'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xa5782c0, stmt=0xa611480, result=0x76cc430
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=7, statement='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 stmt_with_params='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa611480'
+                 ----------------QResult Info -------------------------------
+                 fields=0x82c4d20, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  column "tide" does not exist at character 99', command='DROP TABLE', notice='NOTICE:  table "tmp" does not exist, skipping'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  column "tide" does not exist at character 99'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xa5782c0, status=1, num_stmts=16
+            sock=0x63b4f10, stmts=0x85dcce0, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=27, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=166715008, buffer_out=166719120
+            buffer_filled_in=68, buffer_filled_out=0, buffer_read_in=68
+conn=0xa5782c0, PGAPI_Disconnect
+conn=0xa67fac0, PGAPI_Disconnect
+conn=0x9608290, PGAPI_Disconnect
+conn=0xa6c01e0, PGAPI_Disconnect
+conn=0xa57b800, PGAPI_Disconnect
+conn=0xa6bf210, PGAPI_Disconnect
+conn=0xa68bb40, PGAPI_Disconnect
+conn=0x9f9c520, PGAPI_Disconnect
+conn=0x9ac3e70, PGAPI_Disconnect
+conn=0xa617330, PGAPI_Disconnect
+conn=0xa781da0, PGAPI_Disconnect
+conn=0x9f43d10, PGAPI_Disconnect
+conn=0xc3d51e0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xc3d51e0, query=' '
+conn=0xc3d51e0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xc3d51e0, query='set DateStyle to 'ISO''
+conn=0xc3d51e0, query='set extra_float_digits to 2'
+conn=0xc3d51e0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xc3d51e0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xc3d51e0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xc3d51e0, query='
+drop table if exists tides;
+create table tides
+(
+station integer,
+name varchar(6),
+time timestamp,
+ht float
+);'
+conn=0xb951450, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xb951450, query=' '
+conn=0xb951450, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xb951450, query='set DateStyle to 'ISO''
+conn=0xb951450, query='set extra_float_digits to 2'
+conn=0xb951450, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xb951450, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xb951450, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xb951450, query='create extension postgis'
+ERROR from backend during send_query: 'ERROR:  extension "postgis" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xb951450, stmt=0xb056b10, result=0x8a84c80
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension postgis'
+                 stmt_with_params='create extension postgis'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xb056b10'
+                 ----------------QResult Info -------------------------------
+                 fields=0xa6a4350, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "postgis" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xb951450, status=1, num_stmts=16
+            sock=0xa0391f0, stmts=0x55da520, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=16, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=190072416, buffer_out=198967312
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0xb951450, query='create extension plr'
+ERROR from backend during send_query: 'ERROR:  extension "plr" already exists'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xb951450, stmt=0xa039ad0, result=0xa577830
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=5, statement='create extension plr'
+                 stmt_with_params='create extension plr'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa039ad0'
+                 ----------------QResult Info -------------------------------
+                 fields=0x9846640, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  extension "plr" already exists', command='(NULL)', notice='(NULL)'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  extension "postgis" already exists'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xb951450, status=1, num_stmts=16
+            sock=0xa0391f0, stmts=0x55da520, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=16, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=190072416, buffer_out=198967312
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0xbdc29a0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xbdc29a0, query=' '
+conn=0xbdc29a0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xbdc29a0, query='set DateStyle to 'ISO''
+conn=0xbdc29a0, query='set extra_float_digits to 2'
+conn=0xbdc29a0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xbdc29a0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xbdc29a0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xbdc29a0, query='CREATE OR REPLACE FUNCTION median (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+median(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q10 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.1,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q90 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.9,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q75 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.75,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION q25 (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+quantile(x,0.25,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION minimum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+min(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION maximum (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+max(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION mean (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+mean(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION sd (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION se (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+sd(x,na.rm=TRUE)/sqrt(length(x))'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION length (float[]) RETURNS float AS '
+x<-arg1
+x<-as.numeric(as.character(x))
+x<-na.omit(x)
+length(x)'
+LANGUAGE 'plr' STRICT;
+
+CREATE OR REPLACE FUNCTION PSuitable (float[],float[],float,float,float) RETURNS float AS '
+x<-arg1
+q<-arg2
+depth<-arg3
+ht<-arg4
+tide<-arg5
+depth<-depth+tide
+x2<-q[x>=depth&x<=ht]
+x2<-max(x2)-min(x2)
+if(is.na(x2))x2<-0
+if(x2==-Inf)x2<-0
+x2'
+LANGUAGE 'plr' STRICT;
+
+'
+conn=0xbb85870, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xbb85870, query=' '
+conn=0xbb85870, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xbb85870, query='set DateStyle to 'ISO''
+conn=0xbb85870, query='set extra_float_digits to 2'
+conn=0xbb85870, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xbb85870, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xbb85870, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xbb85870, query='
+                 drop table if exists grat;
+                 create table grat as
+                 select s.* from
+                 (select
+                 geom,
+                 st_area(geom)/1000000 areakm2,
+                 minimum(vals) min,
+                 q10(vals) q10,
+                 q25(vals) q25,
+                 median(vals) median,
+                 mean(vals) mean,
+                 q75(vals) q75,
+                 q90(vals) q90,
+                 maximum(vals) max
+                 from
+                 (select st_envelope(st_tile(rast,20,20)) geom,
+                 st_tile(rast,20,20) rast,
+                 (st_dumpvalues(st_tile(rast,20,20))).valarray vals
+                 from dem) d
+                 ) s
+                 where min>-10 and max < 10 and min <1000000000000;'
+conn=0xbb85870, query='
+ALTER TABLE grat ADD COLUMN rid BIGSERIAL PRIMARY KEY;
+CREATE INDEX grat_gix ON grat USING GIST (geom);
+ALTER TABLE grat ADD COLUMN psuitable numeric(3);
+'
+conn=0xbb9dca0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xbb9dca0, query=' '
+conn=0xbb9dca0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xbb9dca0, query='set DateStyle to 'ISO''
+conn=0xbb9dca0, query='set extra_float_digits to 2'
+conn=0xbb9dca0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xbb9dca0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xbb9dca0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xbb9dca0, query='update grat set psuitable = PSuitable(array[min,q10,q25,median,q75,q90,max],array[0,10,25,50,75,90,100],-2,5,0);'
+conn=0xbbb5910, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xbbb5910, query=' '
+conn=0xbbb5910, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xbbb5910, query='set DateStyle to 'ISO''
+conn=0xbbb5910, query='set extra_float_digits to 2'
+conn=0xbbb5910, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xbbb5910, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xbbb5910, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xbbb5910, query='create table tmp as
+select g.*,
+med median_dem,
+mn mean_dem
+from 
+grat g,
+(select 
+t2.rid,
+median((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) med,
+mean((st_dumpvalues(st_union(st_clip(rast,geom)))).valarray) mn
+from dem t,
+(select * from grat) t2
+where st_intersects(rast,geom)
+group by t2.rid) s
+where s.rid=g.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+conn=0xbbc5db0, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xbbc5db0, query=' '
+conn=0xbbc5db0, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xbbc5db0, query='set DateStyle to 'ISO''
+conn=0xbbc5db0, query='set extra_float_digits to 2'
+conn=0xbbc5db0, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xbbc5db0, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xbbc5db0, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xbbc5db0, query='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+NOTICE from backend during send_query: 'NOTICE:  table "tmp" does not exist, skipping'
+ERROR from backend during send_query: 'ERROR:  column "tide" does not exist at character 99'
+STATEMENT ERROR: func=SC_execute, desc='(null)', errnum=7, errmsg='Error while executing the query'
+                 ------------------------------------------------------------
+                 hdbc=0xbbc5db0, stmt=0xa4bc100, result=0x9fdf090
+                 prepare=2, internal=0
+                 bindings=(nil), bindings_allocated=0
+                 parameters=(nil), parameters_allocated=0
+                 statement_type=7, statement='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 stmt_with_params='
+drop table if exists tmp;
+create table tmp as
+select gg.*,s.tide from
+grat gg,
+(select g.rid,min(tide) tide from 
+grat g,
+tide_regime t
+where st_intersects(t.geom,g.geom)
+group by rid,g.geom) s
+where s.rid=gg.rid;
+drop table grat;
+ALTER TABLE tmp RENAME TO grat;
+CREATE INDEX grat_gix ON grat USING GIST (geom);'
+                 data_at_exec=-1, current_exec_param=-1, put_data=0
+                 currTuple=-1, current_col=-1, lobj_fd=-1
+                 maxRows=0, rowset_size=1, keyset_size=0, cursor_type=0, scroll_concurrency=1
+                 cursor_name='SQL_CUR0xa4bc100'
+                 ----------------QResult Info -------------------------------
+                 fields=0x72e62e0, backend_tuples=(nil), tupleField=0, conn=(nil)
+                 fetch_count=0, num_total_rows=0, num_fields=0, cursor='(NULL)'
+                 message='ERROR:  column "tide" does not exist at character 99', command='DROP TABLE', notice='NOTICE:  table "tmp" does not exist, skipping'
+                 status=7, inTuples=0
+CONN ERROR: func=SC_execute, desc='(null)', errnum=110, errmsg='ERROR:  column "tide" does not exist at character 99'
+            ------------------------------------------------------------
+            henv=0x8eacb40, conn=0xbbc5db0, status=1, num_stmts=16
+            sock=0x8ef22c0, stmts=0x9472630, lobj_type=-999
+            ---------------- Socket Info -------------------------------
+            socket=17, reverse=0, errornumber=0, errormsg='(NULL)'
+            buffer_in=196897024, buffer_out=196901136
+            buffer_filled_in=1, buffer_filled_out=0, buffer_read_in=1
+conn=0xbbc5db0, PGAPI_Disconnect
+conn=0xbbb5910, PGAPI_Disconnect
+conn=0xbb9dca0, PGAPI_Disconnect
+conn=0xbb85870, PGAPI_Disconnect
+conn=0xbdc29a0, PGAPI_Disconnect
+conn=0xb951450, PGAPI_Disconnect
+conn=0xbfb6910, PGAPI_DriverConnect( in)='DSN=brant', fDriverCompletion=0
+DSN info: DSN='brant',server='postgis',port='',dbase='brant',user='docker',passwd='xxxxx'
+          onlyread='0',protocol='8.2.5',showoid='',fakeoidindex='',showsystable=''
+          conn_settings='(null)', conn_encoding='(null)'
+          translation_dll='',translation_option=''
+Driver Version='09.03.0300,201405140001'
+Global Options: fetch=100, socket=4096, unknown_sizes=0, max_varchar_size=255, max_longvarchar_size=8190
+                disable_optimizer=0, ksqo=1, unique_index=1, use_declarefetch=0
+                text_as_longvarchar=1, unknowns_as_longvarchar=0, bools_as_char=1 NAMEDATALEN=64
+                extra_systable_prefixes='dd_;', conn_settings='(null)' conn_encoding=''
+conn=0xbfb6910, query=' '
+conn=0xbfb6910, query='select version()'
+    [ fetched 1 rows ]
+    [ PostgreSQL version string = 'PostgreSQL 9.5.5 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10) 4.9.2, 64-bit' ]
+    [ PostgreSQL version number = '9.5' ]
+conn=0xbfb6910, query='set DateStyle to 'ISO''
+conn=0xbfb6910, query='set extra_float_digits to 2'
+conn=0xbfb6910, query='select oid, typbasetype from pg_type where typname = 'lo''
+    [ fetched 0 rows ]
+    [ Large Object oid = -999 ]
+conn=0xbfb6910, query='select pg_client_encoding()'
+    [ fetched 1 rows ]
+    [ Client encoding = 'SQL_ASCII' (code = 0) ]
+conn=0xbfb6910, PGAPI_DriverConnect(out)='DSN=brant;DATABASE=brant;SERVER=postgis;PORT=5432;UID=docker;PWD=docker;SSLmode=disable;ReadOnly=0;Protocol=8.2.5;FakeOidIndex=0;ShowOidColumn=0;RowVersioning=0;ShowSystemTables=0;ConnSettings=;Fetch=100;Socket=4096;UnknownSizes=0;MaxVarcharSize=255;MaxLongVarcharSize=8190;Debug=0;CommLog=1;Optimizer=0;Ksqo=1;UseDeclareFetch=0;TextAsLongVarchar=1;UnknownsAsLongVarchar=0;BoolsAsChar=1;Parse=0;CancelAsFreeStmt=0;ExtraSysTablePrefixes=dd_;;LFConversion=0;UpdatableCursors=1;DisallowPremature=0;TrueIsMinus1=0;BI=0;ByteaAsLongVarBinary=0;UseServerSidePrepare=1;LowerCaseIdentifier=0;'
+conn=0xc3d51e0, PGAPI_Disconnect
+conn=0xbfb6910, query='
+drop table if exists tides;
+create table tides
+(
+station integer,
+name varchar(6),
+time timestamp,
+ht float
+);'

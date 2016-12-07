@@ -361,6 +361,28 @@ CREATE INDEX %s_gix ON %s USING GIST (geom);",col,l1,col,col,l2,l1,l1,l1,l1)
 odbcQuery(con,query)  
 }
 
+## Backing up and restoring data bases
+
+
+
+PgBackupDb<-function(dbname="brant",path="/home/rstudio/morph/databases/",flnm="brant.backup"){
+  flnm<-paste(path,flnm,sep="")
+  com<-paste("pg_dump -h postgis -U docker ",dbname, "> ",flnm, sep="")
+  system(com)
+}
+
+PgRestoreDb<-function(dbname="brant",path="/home/rstudio/morph/databases/",flnm="brant.backup"){
+  flnm<-paste(path,flnm,sep="")
+  com<-paste("psql -h postgis -U docker ",dbname, " <  ",flnm, sep="")
+  system(com)
+}
+
+#PgMakeDb()
+#PgRestoreDb()
+#PgBackupDb()
+
+
+
 
 
 
