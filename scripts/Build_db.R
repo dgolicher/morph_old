@@ -9,5 +9,6 @@ PgAddResource()
 PgLoadVector()
 PgAddVector()
 source("/home/rstudio/morph/scripts/Xtide.R")
+source("/home/rstudio/morph/scripts/climate.R")
 PgBackupDb()
 
