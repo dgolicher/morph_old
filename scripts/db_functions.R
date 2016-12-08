@@ -187,7 +187,7 @@ odbcQuery(con,query)
 # 
 # ```{r}
 
-PgLoadRaster<-function(flnm="dem.tif",x=100,y=100,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/morph/rasters/"){
+PgLoadRaster<-function(flnm="dem.tif",x=330,y=330,tabnm="dem",db="brant",srid=3857,path="/home/rstudio/morph/rasters/"){
 flnm<-paste(path,flnm,sep="")  
 command <- paste("raster2pgsql -s ",srid, "-I -d  -M  ",flnm, " -F -t ",x,"x",y," ",tabnm,"|psql -h postgis -U docker -d ",db,sep="")
 system(command)
@@ -229,7 +229,7 @@ system(command)
 # ```{r}
 
 
-PgMakeGrat<-function(dem="dem",minht=-5,maxht=10,xdim=10,ydim=10,db="brant")
+PgMakeGrat<-function(dem="dem",minht=-5,maxht=10,xdim=10,ydim=10,srid=3857,db="brant")
 {
   require(RODBC)
   con<-odbcConnect(db)
@@ -238,8 +238,8 @@ PgMakeGrat<-function(dem="dem",minht=-5,maxht=10,xdim=10,ydim=10,db="brant")
                  create table grat as
                  select s.* from
                  (select
-                 geom,
-                 st_area(geom)/1000000 areakm2,
+                  geom::geometry(polygon,%s),
+                 st_area(st_transform(geom,4326)::geography)/1000000 areakm2,
                  minimum(vals) min,
                  q10(vals) q10,
                  q25(vals) q25,
@@ -254,7 +254,7 @@ PgMakeGrat<-function(dem="dem",minht=-5,maxht=10,xdim=10,ydim=10,db="brant")
                  (st_dumpvalues(st_tile(rast,%s,%s))).valarray vals
                  from %s) d
                  ) s
-                 where min>-10 and max < 10 and min <1000000000000;",xdim,ydim,xdim,ydim,xdim,ydim,dem)
+                 where min>-10 and max < 10 and min <1000000000000;",srid,xdim,ydim,xdim,ydim,xdim,ydim,dem)
   
 odbcQuery(con,query)  
 query<-"
@@ -271,7 +271,7 @@ odbcQuery(con,query)
 
 ## Calulate the proportion of each graticule within a suitable heght range,
 
-PgPSuitable<-function(db="brant",depth=-0.5,height=1)
+PgPSuitable<-function(db="brant",depth=-0.5,height=3)
 {
   require(RODBC)
   con<-odbcConnect(db)
@@ -340,7 +340,7 @@ CREATE INDEX grat_gix ON grat USING GIST (geom);",resource,resource,resource)
 # ```{r}
 
 
-PgAddVector<-function(db="brant",l1="grat",l2="tide_regime",col="tide"){
+PgAddVector<-function(db="brant",l1="grat",l2="tide_regime",col="station"){
   require(RODBC)
   con<-odbcConnect(db)
   query<-sprintf("
@@ -356,7 +356,8 @@ group by rid,g.geom) s
 where s.rid=gg.rid;
 drop table %s;
 ALTER TABLE tmp RENAME TO %s;
-CREATE INDEX %s_gix ON %s USING GIST (geom);",col,l1,col,col,l2,l1,l1,l1,l1)
+alter table %s add CONSTRAINT prec_pkey PRIMARY KEY(rid );
+CREATE INDEX %s_gix ON %s USING GIST (geom);",col,l1,col,col,l2,l1,l1,l1,l1,l1)
   
 odbcQuery(con,query)  
 }

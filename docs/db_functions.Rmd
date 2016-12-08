@@ -264,10 +264,10 @@ system(command)
 
 In the MoRph application patches will be either square or rectangular polygons that are derived from vectorising the raster dem that is first added to the data base. Statistics are calulated from the pixel values of the dem and held as attributes. The function can drop graticules where the minimum value is below a certain level and those with a maximum above a certain level, as this may be useful along coastlines.
 
-The dimensions of the graticule can be adjusted to be finer than those used when loading the original raster.
+The dimensions of the graticule can be adjusted to be finer than those used when loading the original raster. Note that to ensure an entry in the postgis geometry columns the result needs to be specifically coerced to a polygon type and the srid supplied.
 
 ```{r}
-PgMakeGrat<-function(dem="dem",minht=-100,maxht=10,xdim=30,ydim=30,db="brant")
+PgMakeGrat<-function(dem="dem",srid=3857,minht=-100,maxht=10,xdim=30,ydim=30,db="brant")
 {
   require(RODBC)
   con<-odbcConnect(db)
@@ -276,8 +276,8 @@ drop table if exists grat;
 create table grat as
 select s.* from
 (select
-geom,
-st_area(geom)/1000000 areakm2,
+geom::geometry(polygon,%s),
+st_area(st_transform(geom,4326)::geography)/1000000 areakm2,
 minimum(vals) min,
 q10(vals) q10,
 q25(vals) q25,
@@ -292,7 +292,7 @@ from
  (st_dumpvalues(st_tile(rast,%s,%s))).valarray vals
   from %s) d
 ) s
-where min>-10 and max < 10 and min <1000000000000;",xdim,ydim,xdim,ydim,xdim,ydim,dem)
+where min>-10 and max < 10 and min <1000000000000;",srid,xdim,ydim,xdim,ydim,xdim,ydim,dem)
   
 odbcQuery(con,query)  
 query<-"
@@ -374,7 +374,7 @@ CREATE INDEX grat_gix ON grat USING GIST (geom);",resource,resource,resource)
 The idea behind this function is quite specific to MoRph, but can be adapted. Assuming that there is a polyon layer loaded using PgLoadVector. The example is a layer with codes representing the tide regime in each bay. Some of the graticule patches may possiby overlap the boundary between tide regimes but only one of the values is needed. The function simply chooses (arbitrarily) the minimum value. This is not going to be a problem in most cases as the boundary is also fairly arbitrary.
 
 ```{r}
-PgAddVector<-function(db="brant",l1="grat",l2="tide_regime",col="stat"){
+PgAddVector<-function(db="brant",l1="grat",l2="tide_regime",col="station"){
   require(RODBC)
   con<-odbcConnect(db)
   query<-sprintf("
@@ -390,7 +390,8 @@ group by rid,g.geom) s
 where s.rid=gg.rid;
 drop table %s;
 ALTER TABLE tmp RENAME TO %s;
-CREATE INDEX %s_gix ON %s USING GIST (geom);",col,l1,col,col,l2,l1,l1,l1,l1)
+alter table %s add CONSTRAINT prec_pkey PRIMARY KEY(rid );
+CREATE INDEX %s_gix ON %s USING GIST (geom);",col,l1,col,col,l2,l1,l1,l1,l1,l1)
   
 odbcQuery(con,query)  
 }

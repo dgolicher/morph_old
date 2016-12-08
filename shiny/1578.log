@@ -3663,3 +3663,5 @@ date date,
 element varchar(6),
 value float
 );'
+conn=0x40cbee0, PGAPI_Disconnect
+conn=0x18a13000, PGAPI_Disconnect
