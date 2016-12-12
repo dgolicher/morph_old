@@ -3,7 +3,7 @@ library(rnoaa)
 #load("station_data.dat")
 #stations<-meteo_process_geographic_data(station_data, lat, lon)
 #climate_data<-ghcnd("USW00025624") ## Load cold bay
-climate_data<-read.csv("data/climate_data.csv")
+climate_data<-read.csv("/home/rstudio/morph/data/climate_data.csv")
 meas<-paste("VALUE",1:31,sep="")
 climate_data<-melt(climate_data,id=c("year","month","element"),m=meas)
 climate_days<-as.numeric(gsub("VALUE","",climate_data$variable))
